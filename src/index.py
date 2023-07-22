@@ -10,6 +10,8 @@ import httpx
 from bs4 import BeautifulSoup
 from jinja2 import Environment, FileSystemLoader
 from starlette.applications import Starlette
+from starlette.middleware import Middleware
+from starlette.middleware.cors import CORSMiddleware
 from starlette.requests import Request
 from starlette.responses import HTMLResponse
 from starlette.routing import Route
@@ -117,6 +119,9 @@ async def html_to_text(request: Request, env: Environment) -> HTMLResponse:
 
 
 env = Environment(loader=FileSystemLoader("src"))
+
+middleware = [Middleware(CORSMiddleware, allow_origins=["*"])]
+
 routes = [
     Route("/", partial(index, env=env)),
     Route("/html-to-text", partial(html_to_text, env=env)),
