@@ -1,0 +1,50 @@
+name: CI
+
+
+on:
+  push:
+
+  # Everyday at 0:37 UTC.
+  schedule:
+    - cron: "37 0 * * *"
+
+
+# Cancel any running workflow if the CI gets triggered again.
+concurrency:
+  group: ${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+
+env:
+  PYTHON_VERSION: "3.12.0-beta.4"
+
+jobs:
+  purge-forks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        id: cp312
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: "pip"
+          cache-dependency-path: |
+            **/requirements*.txt
+
+      - run: |
+          echo "Cache hit: ${{ steps.cp311.outputs.cache-hit }}"
+
+      - name: Install the dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt -r requirements-dev.txt
+
+      - name: Check linter
+        run: |
+          echo "Checking linter conformity..."
+          make lint-check
+
+      - name: Run the tests
+        run: |
+          make test

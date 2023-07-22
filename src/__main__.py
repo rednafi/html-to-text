@@ -45,7 +45,7 @@ def add_trailing_slash(url: str) -> str:
 async def get_html(url: str) -> str:
     """Get HTML from URL"""
 
-    async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient(follow_redirects=True, max_redirects=10) as client:
         try:
             response = await client.get(url)
         except httpx.HTTPError:
@@ -67,6 +67,8 @@ def html_to_text(html: str) -> str:
     soup = BeautifulSoup(html, features="html.parser")
     text = soup.get_text()
 
+    # Remove extra vertical whitespace
+    text = re.sub(r"\n\s*\n", "\n\n", text)
     return text
 
 
