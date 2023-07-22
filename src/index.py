@@ -116,10 +116,9 @@ async def html_to_text(request: Request, env: Environment) -> HTMLResponse:
     return HTMLResponse(template.render(url=url, code=response_dto.text))
 
 
-if __name__ == "__main__":
-    env = Environment(loader=FileSystemLoader("src"))
-    routes = [
-        Route("/", partial(index, env=env)),
-        Route("/html-to-text", partial(html_to_text, env=env)),
-    ]
-    app = Starlette(debug=True, routes=routes)
+env = Environment(loader=FileSystemLoader("src"))
+routes = [
+    Route("/", partial(index, env=env)),
+    Route("/html-to-text", partial(html_to_text, env=env)),
+]
+app = Starlette(debug=True, routes=routes)
