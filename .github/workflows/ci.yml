@@ -19,7 +19,7 @@ env:
   PYTHON_VERSION: "3.12.0-beta.4"
 
 jobs:
-  purge-forks:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -33,7 +33,7 @@ jobs:
             **/requirements*.txt
 
       - run: |
-          echo "Cache hit: ${{ steps.cp311.outputs.cache-hit }}"
+          echo "Cache hit: ${{ steps.cp312.outputs.cache-hit }}"
 
       - name: Install the dependencies
         run: |
