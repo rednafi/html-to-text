@@ -3,6 +3,7 @@ from unittest.mock import MagicMock, patch
 
 import httpx
 import pytest
+from starlette.testclient import TestClient
 
 from src import index
 
@@ -77,3 +78,23 @@ class TestResponseDTO:
     def test_post_init(self):
         response = index.ResponseDTO(html=self.html)
         assert response.text == self.text
+
+
+def test_index():
+    with TestClient(index.app) as client:
+        response = client.get("/")
+        assert response.status_code == HTTPStatus.OK
+        assert "html to text" in response.text.lower()
+
+
+def test_html_to_text():
+    with TestClient(index.app) as client:
+        response = client.get("/html-to-text?url=http://example.com")
+        assert response.status_code == HTTPStatus.OK
+        assert "html to text" in response.text.lower()
+
+
+def test_html_to_text_invalid():
+    with TestClient(index.app) as client:
+        response = client.get("/html-to-text?url=invalid")
+        assert response.status_code == HTTPStatus.BAD_REQUEST
