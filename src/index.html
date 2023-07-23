@@ -1,144 +1,145 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fancy HTML to Text</title>
 
-    <!-- Add some extra styling -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-    />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Bootstrap -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-    <style>
-      .center-container {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 750px;
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+
+  <style>
+    @media (min-width: 992px) {
+      .container {
+        max-width: 900px;
       }
-      h1 {
-        font-family: "Helvetica", sans-serif;
-        font-size: 32px;
-        font-weight: bold;
-        color: #333;
-        text-transform: uppercase;
-        letter-spacing: 2px;
+    }
+
+    h1 {
+      color: #0d6efd;
+      font-family: monospace;
+      font-size: 50px;
+      font-weight: bold;
+      animation: pulse 300ms;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
       }
-    </style>
-  </head>
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
 
-  <body>
-    <div class="center-container">
-      <!-- Add jumbotron for heading -->
-      <div class="container">
-        <div class="d-flex justify-content-center">
-          <div class="p-2 mb-2 mt-5 rounded-3">
-            <h1 class="mt-3">HTML to Text</h1>
-          </div>
-        </div>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mt-3">
+        <h1>HTML to Text</h1>
       </div>
-
-      <!-- Center content -->
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-8 w-100">
-            <!-- Add card for form -->
-            <div class="card p-3 mb-3">
-              <form class="w-100" action="/html-to-text" method="get">
-                <div class="input-group mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="url"
-                    placeholder="URL"
-                    value="{{ url }}"
-                  />
-                  <button class="btn btn-primary" type="submit">
-                    <i class="bi bi-arrow-right-circle"></i> Submit
-                  </button>
-                </div>
-
-                <div class="d-flex justify-content-between">
-                  <button
-                    type="button"
-                    class="btn btn-outline-secondary"
-                    id="clear-btn"
-                    onclick="clearForm()"
-                  >
-                    <i class="bi bi-trash"></i>
-                    Clear
-                  </button>
-                </div>
-              </form>
-            </div>
-
-            <!-- Add card for results -->
-            <div class="card">
-              <div class="card-body">
-                <div class="input-group mb-3">
-                  <button
-                    class="btn btn-outline-primary"
-                    type="button"
-                    id="copy-btn"
-                    onclick="copyCode()"
-                  >
-                    <i class="bi bi-clipboard"></i> Copy
-                  </button>
-                </div>
-                <textarea class="form-control w-100" id="text-area" rows="20">
-{{ code }}</textarea
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Scripts -->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-      <script>
-        function clearForm() {
-          document.querySelector('input[name="url"]').value = "";
-          document.querySelector("#text-area").value = "";
-
-          const btn = document.querySelector("#clear-btn");
-          btn.innerText = "Cleared!";
-
-          setTimeout(() => {
-            btn.innerText = "Clear";
-          }, 1000);
-        }
-
-        function copyCode() {
-          const code = document.querySelector("#text-area").value;
-          
-          if (!navigator.clipboard) {
-            alert("Clipboard can't be accessed. Please copy manually.");
-            return;
-          }
-
-          navigator.clipboard.writeText(code);
-          const btn = document.querySelector("#copy-btn");
-          btn.innerText = "Copied!";
-          setTimeout(() => {
-            btn.innerText = "Copy";
-          }, 1000);
-        }
-      </script>
     </div>
-  </body>
+
+    <div class="row mt-5">
+      <div class="col-xl-10 offset-xl-1 col-lg-13">
+        <!-- Form -->
+        <div class="card p-3 mb-3">
+          <form class="w-150" action="/html-to-text" method="get">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" name="url" placeholder="URL" value="{{ url }}" />
+
+              <button class="btn btn-primary" type="submit" onclick="animateSubmit()">
+                <i class="bi bi-arrow-right-circle"></i> Submit
+              </button>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <button type="button" class="btn btn-outline-secondary" id="clear-btn" onclick="clearForm(); animateClear()">
+                <i class="bi bi-trash"></i> Clear
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Results -->
+        <div class="card">
+          <div class="card-body">
+            <div class="input-group mb-3">
+              <button class="btn btn-outline-primary" type="button" id="copy-btn" onclick="copyCode(); animateCopy()">
+                <i class="bi bi-clipboard"></i> Copy
+              </button>
+            </div>
+
+            <textarea class="form-control" id="text-area" rows="15">
+{{code}}
+            </textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+
+    function animateSubmit() {
+      const btn = document.querySelector("button[type='submit']");
+      btn.classList.add("animate__animated", "animate__pulse");
+
+      setTimeout(() => {
+        btn.classList.remove("animate__animated", "animate__pulse");
+      }, 300);
+    }
+
+    function animateCopy() {
+      const btn = document.querySelector("#copy-btn");
+      btn.classList.add("animate__animated", "animate__pulse");
+
+      setTimeout(() => {
+        btn.classList.remove("animate__animated", "animate__pulse");
+      }, 300);
+    }
+
+    function animateClear() {
+      const btn = document.querySelector("#clear-btn");
+      btn.classList.add("animate__animated", "animate__pulse");
+
+      setTimeout(() => {
+        btn.classList.remove("animate__animated", "animate__pulse");
+      }, 300);
+    }
+
+    function clearForm() {
+      document.querySelector('input[name="url"]').value = "";
+      document.querySelector("#text-area").value = "";
+    }
+
+    function copyCode() {
+      const code = document.querySelector("#text-area").value;
+
+      if(!navigator.clipboard) {
+        alert("Clipboard can't be accessed. Please copy manually.");
+        return;
+      }
+
+      navigator.clipboard.writeText(code);
+    }
+  </script>
+</body>
+
 </html>
