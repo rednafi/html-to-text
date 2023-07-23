@@ -13,11 +13,9 @@ from starlette.applications import Starlette
 from starlette.middleware import Middleware
 from starlette.middleware.cors import CORSMiddleware
 from starlette.middleware.gzip import GZipMiddleware
-from starlette.middleware.httpsredirect import HTTPSRedirectMiddleware
 from starlette.requests import Request
 from starlette.responses import HTMLResponse
 from starlette.routing import Route
-from starlette.types import ASGIApp, Receive, Scope, Send
 
 logging.basicConfig(level=logging.INFO)
 
@@ -121,24 +119,11 @@ async def html_to_text(request: Request, env: Environment) -> HTMLResponse:
     return HTMLResponse(template.render(url=url, code=response_dto.text))
 
 
-class LocalAwareHTTPSRedirectMiddleware(HTTPSRedirectMiddleware):
-    def __init__(self, app: ASGIApp) -> None:
-        self.app = app
-
-    async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
-        # Check if the request is coming from localhost
-        if scope["client"][0] in ("localhost", "0.0.0.0", "127.0.0.1"):
-            return
-        else:
-            await super().__call__(scope, receive, send)
-
-
 env = Environment(loader=FileSystemLoader("src"))
 
 
 middleware = [
     Middleware(CORSMiddleware, allow_origins=["*"]),
-    Middleware(LocalAwareHTTPSRedirectMiddleware),
     Middleware(GZipMiddleware),
 ]
 
