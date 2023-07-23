@@ -126,7 +126,6 @@ class LocalAwareHTTPSRedirectMiddleware(HTTPSRedirectMiddleware):
         self.app = app
 
     async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
-        print(scope["client"])
         # Check if the request is coming from localhost
         if scope["client"][0] in ("localhost", "0.0.0.0", "127.0.0.1"):
             return
