@@ -9,10 +9,6 @@ from src import index
 
 
 def mock_async_client(mock_response):
-    # Returns a MagicMock object mocking httpx.AsyncClient
-    # Usage:
-    #   client = mock_async_client(mock_response)
-    #   html = await get_html('https://example.com', client)
     mock_client = MagicMock()
     mock_client.__aenter__.return_value.get.return_value = mock_response
     return mock_client
@@ -48,14 +44,6 @@ class TestRequestDTO:
     def test_validate_url_valid(self):
         request = index.RequestDTO(url=self.url_with_slash)
         assert request.validate_url() is True
-
-    def test_add_trailing_slash(self):
-        request = index.RequestDTO(url=self.url_without_slash)
-        assert request.add_trailing_slash_to_url() == self.url_with_slash
-
-    def test_add_trailing_slash_already_present(self):
-        request = index.RequestDTO(url=self.url_with_slash)
-        assert request.add_trailing_slash_to_url() == self.url_with_slash
 
     def test_post_init_empty_url(self):
         with pytest.raises(ValueError, match="Empty URL."):

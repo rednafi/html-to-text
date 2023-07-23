@@ -40,21 +40,12 @@ class RequestDTO:
         else:
             return False
 
-    def add_trailing_slash_to_url(self) -> str:
-        """Add trailing slash to url."""
-
-        if self.url[-1] == "/":
-            return self.url
-        else:
-            return self.url + "/"
-
     def __post_init__(self) -> None:
         if not self.url:
             raise ValueError("Empty URL.")
 
         if not self.validate_url():
             raise ValueError("Invalid URL.")
-        self.url = self.add_trailing_slash_to_url()
 
 
 @dataclass(slots=True)
@@ -80,8 +71,12 @@ async def get_html(url: str) -> str:
     """Get HTML from URL."""
 
     async with httpx.AsyncClient(follow_redirects=True, max_redirects=10) as client:
+        headers = {
+            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+            "(KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36"
+        }
         try:
-            response = await client.get(url)
+            response = await client.get(url, headers=headers)
         except httpx.HTTPError:
             error_message = f"Failed to get HTML from {url}."
             logging.error(error_message)
