@@ -129,7 +129,7 @@ class LocalAwareHTTPSRedirectMiddleware(HTTPSRedirectMiddleware):
         print(scope["client"])
         # Check if the request is coming from localhost
         if scope["client"][0] in ("localhost", "0.0.0.0", "127.0.0.1"):
-            await self.app(scope, receive, send)
+            return
         else:
             await super().__call__(scope, receive, send)
 
