@@ -139,8 +139,8 @@ env = Environment(loader=FileSystemLoader("src"))
 
 middleware = [
     Middleware(CORSMiddleware, allow_origins=["*"]),
-    Middleware(GZipMiddleware),
     Middleware(LocalAwareHTTPSRedirectMiddleware),
+    Middleware(GZipMiddleware),
 ]
 
 
