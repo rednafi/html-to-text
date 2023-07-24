@@ -6,6 +6,9 @@ on:
     tags:
       - '*'
   workflow_dispatch:
+  schedule:
+    # Every month
+    - cron: "0 0 1 * *"
 
 jobs:
   deploy:
