@@ -43,5 +43,5 @@ soupsieve==2.4.1
     # via beautifulsoup4
 starlette==0.31.0
     # via html-to-text (pyproject.toml)
-uvicorn==0.23.1
+uvicorn==0.23.2
     # via html-to-text (pyproject.toml)
