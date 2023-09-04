@@ -100,7 +100,7 @@ sniffio==1.3.0
     #   anyio
     #   httpcore
     #   httpx
-soupsieve==2.4.1
+soupsieve==2.5
     # via
     #   -r -
     #   beautifulsoup4
