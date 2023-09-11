@@ -13,7 +13,7 @@ beautifulsoup4==4.12.2
     # via
     #   -r -
     #   bs4
-black==23.7.0
+black==23.9.1
     # via html-to-text (pyproject.toml)
 bs4==0.0.1
     # via
