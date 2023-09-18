@@ -39,7 +39,7 @@ h11==0.14.0
     #   -r -
     #   httpcore
     #   uvicorn
-httpcore==0.17.3
+httpcore==0.18.0
     # via
     #   -r -
     #   httpx
