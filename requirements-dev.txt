@@ -43,7 +43,7 @@ httpcore==0.17.3
     # via
     #   -r -
     #   httpx
-httpx==0.24.1
+httpx==0.25.0
     # via
     #   -r -
     #   html-to-text (pyproject.toml)
