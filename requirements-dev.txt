@@ -47,7 +47,7 @@ httpx==0.25.1
     # via
     #   -r -
     #   html-to-text (pyproject.toml)
-idna==3.4
+idna==3.6
     # via
     #   -r -
     #   anyio
