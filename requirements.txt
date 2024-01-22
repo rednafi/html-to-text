@@ -8,7 +8,7 @@ anyio==4.2.0
     # via
     #   httpcore
     #   starlette
-beautifulsoup4==4.12.2
+beautifulsoup4==4.12.3
     # via bs4
 bs4==0.0.2
     # via html-to-text (pyproject.toml)
