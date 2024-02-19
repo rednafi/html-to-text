@@ -22,7 +22,7 @@ h11==0.14.0
     # via
     #   httpcore
     #   uvicorn
-httpcore==1.0.2
+httpcore==1.0.3
     # via httpx
 httpx==0.26.0
     # via html-to-text (pyproject.toml)
