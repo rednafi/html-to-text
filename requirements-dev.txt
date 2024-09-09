@@ -104,7 +104,7 @@ soupsieve==2.6
     # via
     #   -r -
     #   beautifulsoup4
-starlette==0.38.4
+starlette==0.38.5
     # via
     #   -r -
     #   html-to-text (pyproject.toml)
