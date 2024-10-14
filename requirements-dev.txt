@@ -4,7 +4,7 @@
 #
 #    pip-compile --extra=dev --output-file=requirements-dev.txt - pyproject.toml
 #
-anyio==4.6.0
+anyio==4.6.2
     # via
     #   -r -
     #   httpcore
