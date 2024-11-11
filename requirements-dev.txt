@@ -114,7 +114,7 @@ uvicorn==0.32.0
     # via
     #   -r -
     #   html-to-text (pyproject.toml)
-wheel==0.44.0
+wheel==0.45.0
     # via pip-tools
 
 # The following packages are considered to be unsafe in a requirements file:
