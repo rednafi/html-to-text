@@ -110,7 +110,7 @@ starlette==0.41.2
     #   html-to-text (pyproject.toml)
 typing-extensions==4.12.2
     # via mypy
-uvicorn==0.32.0
+uvicorn==0.32.1
     # via
     #   -r -
     #   html-to-text (pyproject.toml)
