@@ -26,7 +26,7 @@ certifi==2024.8.30
     #   -r -
     #   httpcore
     #   httpx
-click==8.1.7
+click==8.1.8
     # via
     #   -r -
     #   black
