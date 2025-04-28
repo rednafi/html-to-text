@@ -64,7 +64,7 @@ markupsafe==3.0.2
     #   jinja2
 mypy==1.15.0
     # via html-to-text (pyproject.toml)
-mypy-extensions==1.0.0
+mypy-extensions==1.1.0
     # via
     #   black
     #   mypy
