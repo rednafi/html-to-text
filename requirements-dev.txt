@@ -92,7 +92,7 @@ pytest-asyncio==0.26.0
     # via html-to-text (pyproject.toml)
 pytest-cov==6.1.1
     # via html-to-text (pyproject.toml)
-ruff==0.11.6
+ruff==0.11.8
     # via html-to-text (pyproject.toml)
 sniffio==1.3.1
     # via
