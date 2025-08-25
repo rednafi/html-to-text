@@ -9,7 +9,7 @@ anyio==4.10.0
     #   -r -
     #   httpcore
     #   starlette
-beautifulsoup4==4.13.4
+beautifulsoup4==4.13.5
     # via
     #   -r -
     #   bs4
