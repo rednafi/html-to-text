@@ -77,7 +77,7 @@ pathspec==0.12.1
     # via black
 pip-tools==7.5.0
     # via html-to-text (pyproject.toml)
-platformdirs==4.3.8
+platformdirs==4.4.0
     # via black
 pluggy==1.6.0
     # via pytest
