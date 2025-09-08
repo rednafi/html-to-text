@@ -83,7 +83,7 @@ pluggy==1.6.0
     # via pytest
 pyproject-hooks==1.2.0
     # via build
-pytest==8.4.1
+pytest==8.4.2
     # via
     #   html-to-text (pyproject.toml)
     #   pytest-asyncio
