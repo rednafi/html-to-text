@@ -12,7 +12,7 @@ beautifulsoup4==4.14.0
     # via bs4
 bs4==0.0.2
     # via html-to-text (pyproject.toml)
-certifi==2025.8.3
+certifi==2025.10.5
     # via
     #   httpcore
     #   httpx
