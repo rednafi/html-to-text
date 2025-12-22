@@ -62,7 +62,7 @@ markupsafe==3.0.3
     # via
     #   -r -
     #   jinja2
-mypy==1.19.0
+mypy==1.19.1
     # via html-to-text (pyproject.toml)
 mypy-extensions==1.1.0
     # via
