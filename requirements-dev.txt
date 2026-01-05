@@ -21,7 +21,7 @@ bs4==0.0.2
     #   html-to-text (pyproject.toml)
 build==1.3.0
     # via pip-tools
-certifi==2025.11.12
+certifi==2026.1.4
     # via
     #   -r -
     #   httpcore
