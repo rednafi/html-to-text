@@ -90,7 +90,7 @@ pytest==8.4.2
     #   pytest-cov
 pytest-asyncio==1.2.0
     # via html-to-text (pyproject.toml)
-pytest-cov==7.0.0
+pytest-cov==7.1.0
     # via html-to-text (pyproject.toml)
 ruff==0.15.6
     # via html-to-text (pyproject.toml)
