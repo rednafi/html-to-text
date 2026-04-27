@@ -73,7 +73,7 @@ packaging==26.1
     #   black
     #   build
     #   pytest
-pathspec==1.0.4
+pathspec==1.1.1
     # via black
 pip-tools==7.5.3
     # via html-to-text (pyproject.toml)
