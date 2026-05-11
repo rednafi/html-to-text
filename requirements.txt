@@ -26,7 +26,7 @@ httpcore==1.0.9
     # via httpx
 httpx==0.28.1
     # via html-to-text (pyproject.toml)
-idna==3.13
+idna==3.14
     # via
     #   anyio
     #   httpx
