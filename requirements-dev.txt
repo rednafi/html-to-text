@@ -19,7 +19,7 @@ bs4==0.0.2
     # via
     #   -r -
     #   html-to-text (pyproject.toml)
-build==1.4.4
+build==1.5.0
     # via pip-tools
 certifi==2026.6.17
     # via
