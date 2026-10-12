@@ -75,7 +75,7 @@ packaging==26.3
     #   pytest
 pathspec==1.1.1
     # via black
-pip-tools==7.6.1
+pip-tools==7.6.2
     # via html-to-text (pyproject.toml)
 platformdirs==4.12.4
     # via black
